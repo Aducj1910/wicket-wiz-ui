@@ -11,6 +11,7 @@ import logo from "../resources/logo.png";
 import { Button } from "@material-ui/core";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { Translate } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   logo: {
@@ -95,9 +96,11 @@ export default function SearchAppBar() {
       <AppBar position="static">
         <Toolbar style={{ paddingLeft: 1, paddingTop: 6 }}>
           <Typography className={classes.title} variant="h6" noWrap>
-            <img src={logo} className={classes.logo} />
+            <Link to="/">
+              <img src={logo} className={classes.logo} />
+            </Link>
           </Typography>
-          <Button>
+          <Button component={Link} to={"/stats-engine"}>
             <Typography className={classes.itemStyle} variant="h6" noWrap>
               Stats Engine
             </Typography>
