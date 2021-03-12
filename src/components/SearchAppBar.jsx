@@ -12,6 +12,9 @@ import { Button } from "@material-ui/core";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { Translate } from "@material-ui/icons";
 import { Link } from "react-router-dom";
+import styles from "../stylesheets/App.css";
+
+// backgroundImage: linear-gradient(to right, #08fff7, #ff00d9);
 
 const useStyles = makeStyles((theme) => ({
   logo: {
@@ -82,6 +85,12 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+
+  topButton: {
+    "&:hover": {
+      backgroundColor: "rgba(0,0,0,0)",
+    },
+  },
 }));
 
 export default function SearchAppBar() {
@@ -100,17 +109,29 @@ export default function SearchAppBar() {
               <img src={logo} className={classes.logo} />
             </Link>
           </Typography>
-          <Button component={Link} to={"/stats-engine"}>
+          <Button
+            className={`${classes.topButton} underline`}
+            component={Link}
+            to={"/stats-engine"}
+          >
             <Typography className={classes.itemStyle} variant="h6" noWrap>
               Stats Engine
             </Typography>
           </Button>
-          <Button>
+          <Button
+            className={`${classes.topButton} underline`}
+            component={Link}
+            to={"/about"}
+          >
             <Typography className={classes.itemStyle} variant="h6" noWrap>
               About
             </Typography>
           </Button>
-          <Button>
+          <Button
+            className={`${classes.topButton} underline`}
+            component={Link}
+            to={"/donate"}
+          >
             <Typography className={classes.itemStyle} variant="h6" noWrap>
               Donate
             </Typography>

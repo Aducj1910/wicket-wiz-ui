@@ -95,13 +95,7 @@ const LandingWallpaper = (props) => {
             </Grid>
           </Grid>
         </Collapse>
-
         <CssBaseline />
-      </div>
-      <div id="info">
-        <Grid item xs={12}>
-          <Info />
-        </Grid>
       </div>
     </div>
   );

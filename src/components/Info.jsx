@@ -40,7 +40,7 @@ const Info = () => {
   return (
     <div className={classes.infoDiv}>
       <Typography align="center" className={classes.titleTxtStyle}>
-        INFORMATION
+        FEATURES
       </Typography>
       <div className={classes.cardDiv}>
         <Grid container spacing={2}>

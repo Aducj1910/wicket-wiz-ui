@@ -1,0 +1,73 @@
+.wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.swipe {
+  /* display: block;
+  width: 200px;
+  height: 40px; */
+  /* line-height: 40px; */
+  /* font-size: 18px; */
+  /* font-family: sans-serif; */
+  text-decoration: none;
+  color: #333;
+  /* border: 2px solid #333; */
+  /* letter-spacing: 2px; */
+  /* text-align: center; */
+  /* position: relative; */
+  transition: all 0.35s;
+}
+
+.swipe span {
+  position: relative;
+  z-index: 2;
+}
+
+.swipe:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(to right, #ff00bf, #00fff7);
+  transition: all 0.35s;
+}
+
+.swipe:hover {
+  color: #fff;
+}
+
+.swipe:hover:after {
+  width: 100%;
+}
+
+.underline {
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+
+  display: inline-block;
+  padding: 15px 20px;
+  position: relative;
+}
+.underline:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #fff;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.underline:hover:after {
+  width: 100%;
+  left: 0;
+}

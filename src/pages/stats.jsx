@@ -1,8 +1,17 @@
-import React, { Component } from "react";
-import { Grid, Input, Typography } from "@material-ui/core";
+import React, { Component, useState } from "react";
+import {
+  Grid,
+  Input,
+  Typography,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Select,
+} from "@material-ui/core";
 import SearchAppBar from "../components/SearchAppBar";
 import { makeStyles } from "@material-ui/styles";
-import SimpleMenuStatsType from "../components/statsTypeChoice";
+import { Router } from "react-router-dom";
+import PlayerSearch from "../components/playerSearchStats";
 
 const useStyles = makeStyles((theme) => ({
   labelTxt: {
@@ -22,86 +31,119 @@ const useStyles = makeStyles((theme) => ({
   rowGrid: {
     paddingTop: theme.spacing(2),
   },
-  inputGrid: {
-    paddingLeft: theme.spacing(3),
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  label: {
+    fontFamily: "Noto Sans JP",
+    paddingTop: theme.spacing(3),
+  },
+  input: {
+    minWidth: 200,
   },
 }));
 
 const Stats = () => {
   let classes = useStyles();
+  const [indType, setIndType] = useState("bat");
 
-  return (
-    <div>
-      <header>
-        <SearchAppBar />
-      </header>
+  const indHandleChange = (event) => {
+    setIndType(event.target.value);
+  };
 
-      <div className={classes.statsDiv}>
-        <Grid container>
-          <Grid item xs={12}>
-            <Typography align="center" className={classes.titleTxt}>
-              Using CASE pre-alpha
-            </Typography>
-          </Grid>
-          {/* new 
-          row of data
-          */}
-          <Grid item container className={classes.rowGrid} xs={12}>
-            <Grid item xs={1}>
-              <Typography>Batsman: </Typography>
+  if (indType == "bat") {
+    return (
+      <div>
+        <header>
+          <SearchAppBar />
+        </header>
+
+        <div className={classes.statsDiv}>
+          <Grid container>
+            <Grid item xs={4}>
+              <Typography align="left" className={classes.titleTxt}>
+                Using CASE pre-alpha:
+              </Typography>
             </Grid>
-            <Grid className={classes.inputGrid} item xs={2}>
-              <Input className={classes.inputStyle} />
-            </Grid>
-          </Grid>
-          {/* new 
-          row of data
-          */}
-          <Grid item container className={classes.rowGrid} xs={12}>
-            <Grid item xs={1}>
-              <Typography>Bowler:</Typography>
-            </Grid>
-            <Grid className={classes.inputGrid} item xs={2}>
-              <Input className={classes.inputStyle} />
-            </Grid>
-          </Grid>
-          {/* new 
-          row of data
-          */}
-          <Grid item container className={classes.rowGrid} xs={12}>
-            <Grid item xs={1}>
-              <Typography>Non-striker:</Typography>
-            </Grid>
-            <Grid className={classes.inputGrid} item xs={2}>
-              <Input className={classes.inputStyle} />
+            <Grid item xs={4}>
+              <FormControl variant="filled" className={classes.formControl}>
+                <InputLabel id="demo-simple-select-filled-label">
+                  Stats for
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  value={indType}
+                  onChange={indHandleChange}
+                >
+                  <MenuItem value={"bat"}>Batting</MenuItem>
+                  <MenuItem value={"bowl"}>Bowling</MenuItem>
+                  <MenuItem value={"field"}>Fielding</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
           </Grid>
-          {/* new 
-          row of data
-          */}
-          <Grid item container className={classes.rowGrid} xs={12}>
-            <Grid item xs={1}>
-              <Typography>Umpire:</Typography>
-            </Grid>
-            <Grid className={classes.inputGrid} item xs={2}>
-              <Input className={classes.inputStyle} />
-            </Grid>
-          </Grid>
-          {/* new 
-          row of data
-          */}
-          <Grid item container className={classes.rowGrid} xs={12}>
-            <Grid item xs={1}>
-              <Typography>Venue:</Typography>
-            </Grid>
-            <Grid className={classes.inputGrid} item xs={2}>
-              <Input className={classes.inputStyle} />
-            </Grid>
-          </Grid>
-        </Grid>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+  if (indType == "bowl") {
+    return (
+      <div>
+        <header>
+          <SearchAppBar />
+        </header>
+
+        <div className={classes.statsDiv}>
+          <Grid container>
+            <Grid item xs={4}>
+              <Typography align="left" className={classes.titleTxt}>
+                Using CASE pre-alpha:
+              </Typography>
+            </Grid>
+            <Grid item xs={8}>
+              <FormControl variant="filled" className={classes.formControl}>
+                <InputLabel id="demo-simple-select-filled-label">
+                  Stats for
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  value={indType}
+                  onChange={indHandleChange}
+                >
+                  <MenuItem value={"bat"}>Batting</MenuItem>
+                  <MenuItem value={"bowl"}>Bowling</MenuItem>
+                  <MenuItem value={"field"}>Fielding</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            {/* new 
+            row */}
+            <Grid className={classes.rowGrid} item xs={12} container>
+              <Grid item xs={3} md={1}>
+                <Typography className={classes.label}>Batsman:</Typography>
+              </Grid>
+              <Grid item xs={3}>
+                <PlayerSearch lbl="Batsman" />
+              </Grid>
+            </Grid>
+            {/* new 
+            row */}
+            <Grid className={classes.rowGrid} item xs={12} container>
+              <Grid item xs={3} md={1}>
+                <Typography className={classes.label}>Venue:</Typography>
+              </Grid>
+              <Grid item xs={3}>
+                <Input className={classes.input} />
+              </Grid>
+            </Grid>
+          </Grid>
+        </div>
+      </div>
+    );
+  }
 };
 
 export default Stats;

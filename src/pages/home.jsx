@@ -11,6 +11,7 @@ import SearchAppBar from "../components/SearchAppBar";
 import FormatDropdown from "../components/FormatDropdown";
 import LandingWallpaper from "../components/LandingWallpaper";
 import Info from "../components/Info";
+import Footer from "../components/footer";
 
 class Home extends Component {
   scrollToInfo = () => {
@@ -28,6 +29,12 @@ class Home extends Component {
           <Grid container>
             <Grid item xs={12}>
               <LandingWallpaper scrollToInfo={this.scrollToInfo} />
+            </Grid>
+            <Grid id="info" item xs={12}>
+              <Info />
+            </Grid>
+            <Grid item xs={12}>
+              <Footer />
             </Grid>
           </Grid>
         </body>
